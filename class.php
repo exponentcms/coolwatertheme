@@ -20,6 +20,7 @@ if (class_exists('coolwatertheme')) return;
 
 class coolwatertheme extends theme {
     public $user_configured = true;
+    public $stock_theme = true;
 
 	function name() { return "Coolwater Theme"; }
 	function author() { return "Erwin Aligam - ealigam@gmail.com"; }
