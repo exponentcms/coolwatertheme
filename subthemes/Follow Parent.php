@@ -5,8 +5,11 @@
 	    expTheme::head(array(
 	        "xhtml"=>false,
 		    "css_primer"=>array(
-                YUI2_RELATIVE."yui2-reset-fonts-grids/yui2-reset-fonts-grids.css"),
-	        "css_core"=>array("common"),
+                YUI2_RELATIVE."yui2-reset-fonts-grids/yui2-reset-fonts-grids.css"
+            ),
+	        "css_core"=>array(
+                "common"
+            ),
 	        "css_links"=>true,
 	        "css_theme"=>true
 	        )
@@ -42,7 +45,8 @@
 		            <?php expTheme::main(); ?>
 				</div>
 				<div id="sidebar">
-		            <?php expTheme::module(array("module"=>"container","view"=>"Default","source"=>"@left","scope"=>"top-sectional")); ?>
+		            <?php //expTheme::module(array("module"=>"container","view"=>"Default","source"=>"@left","scope"=>"top-sectional")); ?>
+                    <?php expTheme::module(array("controller"=>"container2","action"=>"showall","view"=>"showall","source"=>"@left","scope"=>"top-sectional")); ?>
 		        </div>
 			<!-- content-wrap ends here -->
 			</div>
