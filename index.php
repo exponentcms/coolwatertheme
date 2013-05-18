@@ -37,7 +37,6 @@
 			</div>
 			<!-- navigation -->
 			<div id="menu">
-<!--                --><?php //expTheme::module(array("module"=>"navigation","view"=>"YUI Top Nav")); ?>
                 <?php expTheme::module(array("controller"=>"navigation","action"=>"showall","view"=>"showall_YUI Top Nav")); ?>
 			</div>
 			<!-- content-wrap starts here -->
@@ -46,7 +45,6 @@
 		            <?php expTheme::main(); ?>
 				</div>
 				<div id="sidebar">
-		            <?php //expTheme::module(array("module"=>"container","view"=>"Default","source"=>"@left")); ?>
                     <?php expTheme::module(array("controller"=>"container","action"=>"showall","view"=>"showall","source"=>"@left")); ?>
 		        </div>
 			<!-- content-wrap ends here -->

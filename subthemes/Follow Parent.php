@@ -45,7 +45,6 @@
 		            <?php expTheme::main(); ?>
 				</div>
 				<div id="sidebar">
-		            <?php //expTheme::module(array("module"=>"container","view"=>"Default","source"=>"@left","scope"=>"top-sectional")); ?>
                     <?php expTheme::module(array("controller"=>"container","action"=>"showall","view"=>"showall","source"=>"@left","scope"=>"top-sectional")); ?>
 		        </div>
 			<!-- content-wrap ends here -->
