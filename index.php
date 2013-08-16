@@ -21,7 +21,7 @@
 		<div id="wrap">
 			<!--header -->
 			<div id="header">			
-				<h1 id="logo-text"><a href="<?php echo URL_FULL; ?>index.php" title="<?php echo SITE_TITLE; ?>"><span class="green"><?php if(LOGO_TEXT_MAIN!='') echo LOGO_TEXT_MAIN; else echo ORGANIZATION_NAME; ?></span> <sup><?php echo LOGO_TEXT_SUPERSCRIPT; ?></sup></a></h1>
+				<div id="logo-text"><a href="<?php echo URL_FULL; ?>index.php" title="<?php echo SITE_TITLE; ?>"><span class="green"><?php if(LOGO_TEXT_MAIN!='') echo LOGO_TEXT_MAIN; else echo ORGANIZATION_NAME; ?></span> <sup><?php echo LOGO_TEXT_SUPERSCRIPT; ?></sup></a></div>
 				<p id="slogan"><?php echo SITE_HEADER; ?></p>
 				<div id="header-links">
                     <a href="<?php echo expCore::makeLink(array('section'=>(LINK1_SECTION!=''?LINK1_SECTION:SITE_DEFAULT_SECTION))); ?>"><?php if(LINK1_TEXT!='') echo LINK1_TEXT; ?></a>
