@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2013 OIC Group, Inc.
+# Copyright (c) 2004-2014 OIC Group, Inc.
 #
 # This file is part of Exponent
 #
@@ -27,17 +27,17 @@ class coolwatertheme extends theme {
 	function description() { return "A simple, clean design from the kids at <a href=\"http://styleshout.com/\" target=\"_blank\">Style Shout</a>"; }
 
     function configureTheme() {
-        if (!empty($_GET['sv'])) {
-            if (strtolower($_GET['sv'])=='default') $_GET['sv']='';
-            $settings = expSettings::parseFile(BASE."themes/".$_GET['theme']."/config_".$_GET['sv'].".php");
+        if (!empty($this->params['sv'])) {
+            if (strtolower($this->params['sv'])=='default') $this->params['sv']='';
+            $settings = expSettings::parseFile(BASE."themes/".$this->params['theme']."/config_".$this->params['sv'].".php");
         } else {
-            $settings = expSettings::parseFile(BASE."themes/".$_GET['theme']."/config.php");
+            $settings = expSettings::parseFile(BASE."themes/".$this->params['theme']."/config.php");
         }
    		$form = new form();
    		$form->meta('controller','administration');
    		$form->meta('action','update_theme');
-   		$form->meta('theme',$_GET['theme']);
-        if (!empty($_GET['sv'])) $form->meta('sv',$_GET['sv']);
+   		$form->meta('theme',$this->params['theme']);
+        if (!empty($this->params['sv'])) $form->meta('sv',$this->params['sv']);
         $form->register('logo_text_main',gt('Main Site Title').': ',new textcontrol($settings['LOGO_TEXT_MAIN'],20));
         $form->register('logo_text_superscript',gt('Site Sub Title').': ',new textcontrol($settings['LOGO_TEXT_SUPERSCRIPT'],20));
         $form->register('link1_text',gt('Link #1 Text (blank to disable)').' : ',new textcontrol($settings['LINK1_TEXT'],20));
@@ -50,7 +50,7 @@ class coolwatertheme extends theme {
 //   		$form->register(null,'',new htmlcontrol('<br>'));
    		$form->register('submit','',new buttongroupcontrol(gt('Save'),'',gt('Cancel')));
    		assign_to_template(array(
-            'name'=>$this->name().(!empty($_GET['sv'])?' '.$_GET['sv']:''),
+            'name'=>$this->name().(!empty($this->params['sv'])?' '.$this->params['sv']:''),
             'form_html'=>$form->tohtml()
         ));
    	}

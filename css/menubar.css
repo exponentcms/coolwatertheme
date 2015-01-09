@@ -275,7 +275,8 @@
 .navigation .yui-menu-shadow-visible{
 	background-color:#000;
 	opacity:.12;
-	*filter:alpha(opacity=12);
+	-moz-opacity:.12;
+	filter:alpha(opacity=12);
 }
 
 .navigation .yuimenuitemlabel-disabled{
