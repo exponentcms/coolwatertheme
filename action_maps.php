@@ -2,7 +2,7 @@
 
 ##################################################
 #
-# Copyright (c) 2004-2014 OIC Group, Inc.
+# Copyright (c) 2004-2015 OIC Group, Inc.
 #
 # This file is part of Exponent
 #
@@ -18,10 +18,29 @@
 
 if (!defined('EXPONENT')) exit('');
 
+// the module may be a wildcard (meaning all modules) by using an asterisk '*'
+// the action may be a wildcard (meaning all methods) by using an asterisk '*'
 return array(
-	'cart'=>array(
-        'checkout'=>'Full Body'
+    'cart'=>array(                      // the 'cart' module
+        '*'=>'Full Body'                // ANY method will use the 'Full Size' subtheme
     ),
+    'order'=>array(                     // the 'order' module
+        '*'=>'Full Body'                // ANY method will use the 'Full Size' subtheme
+    ),
+    'report'=>array(                    // the 'report' module
+        '*'=>'Full Body'                // ANY method will use the 'Full Size' subtheme
+    ),
+    'store'=>array(                     // the 'store' module
+        'manage'=>'Full Body'           // 'manage' method will use the 'Full Size' subtheme
+    ),
+//    '*'=>array(                         // ANY module
+//        'showall_by_tags'=>'Tags View'  // showall_by_tags method will use the 'Tags View' subtheme
+//    ),
+//    'news'=>array(
+//        'show'=>'Large Banner'
+//    ),
+//    'search'=>array(
+//        'search'=>'_Search Results'
+//    ),
 );
-
 ?>
