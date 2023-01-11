@@ -1,5 +1,5 @@
 {*
- * Copyright (c) 2004-2018 OIC Group, Inc.
+ * Copyright (c) 2004-2023 OIC Group, Inc.
  *
  * This file is part of Exponent
  *
@@ -44,8 +44,8 @@
 			{section name="close" loop=$looper}
 						</li>
 					</ul>
-				</div>	
-			</div>	
+				</div>
+			</div>
 
 			{/section}
 				</li>
@@ -72,55 +72,55 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
             oElement,
             oShadow,
             oUL;
-    
+
         if (this.parent) {
             oElement = this.element;
 
             /*
-                 Get a reference to the Menu's shadow element and 
-                 set its "height" property to "0px" to syncronize 
+                 Get a reference to the Menu's shadow element and
+                 set its "height" property to "0px" to syncronize
                  it with the height of the Menu instance.
             */
             oShadow = oElement.lastChild;
             oShadow.style.height = "0px";
 
             /*
-                Stop the Animation instance if it is currently 
+                Stop the Animation instance if it is currently
                 animating a Menu.
-            */ 
+            */
             if (oAnim && oAnim.isAnimated()) {
                 oAnim.stop();
                 oAnim = null;
             }
 
             /*
-                Set the body element's "overflow" property to 
-                "hidden" to clip the display of its negatively 
+                Set the body element's "overflow" property to
+                "hidden" to clip the display of its negatively
                 positioned <ul> element.
-            */ 
+            */
             oBody = this.body;
 
             //  Check if the menu is a submenu of a submenu.
             if (this.parent &&
                 !(this.parent instanceof YAHOO.widget.MenuBarItem)) {
-            
+
                 /*
-                    There is a bug in gecko-based browsers where 
-                    an element whose "position" property is set to 
-                    "absolute" and "overflow" property is set to 
+                    There is a bug in gecko-based browsers where
+                    an element whose "position" property is set to
+                    "absolute" and "overflow" property is set to
                     "hidden" will not render at the correct width when
-                    its offsetParent's "position" property is also 
-                    set to "absolute."  It is possible to work around 
-                    this bug by specifying a value for the width 
+                    its offsetParent's "position" property is also
+                    set to "absolute."  It is possible to work around
+                    this bug by specifying a value for the width
                     property in addition to overflow.
                 */
                 if (ua.gecko) {
                     oBody.style.width = oBody.clientWidth + "px";
                 }
-                
+
                 /*
-                    Set a width on the submenu to prevent its 
-                    width from growing when the animation 
+                    Set a width on the submenu to prevent its
+                    width from growing when the animation
                     is complete.
                 */
                 if (ua.ie == 7) {
@@ -131,10 +131,10 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
             oBody.style.overflow = "hidden";
 
             /*
-                Set the <ul> element's "marginTop" property 
+                Set the <ul> element's "marginTop" property
                 to a negative value so that the Menu's height
                 collapses.
-            */ 
+            */
             oUL = oBody.getElementsByTagName("ul")[0];
 
             oUL.style.marginTop = ("-" + oUL.offsetHeight + "px");
@@ -142,24 +142,24 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
     }
 
     /*
-        "tween" event handler for the Anim instance, used to 
-        syncronize the size and position of the Menu instance's 
-        shadow and iframe shim (if it exists) with its 
+        "tween" event handler for the Anim instance, used to
+        syncronize the size and position of the Menu instance's
+        shadow and iframe shim (if it exists) with its
         changing height.
     */
     function onTween(p_sType, p_aArgs, p_oShadow) {
         if (this.cfg.getProperty("iframe")) {
             this.syncIframe();
         }
-    
+
         if (p_oShadow) {
             p_oShadow.style.height = this.element.offsetHeight + "px";
         }
     }
 
     /*
-        "complete" event handler for the Anim instance, used to 
-        remove style properties that were animated so that the 
+        "complete" event handler for the Anim instance, used to
+        remove style properties that were animated so that the
         Menu instance can be displayed at its final height.
     */
     function onAnimationComplete(p_sType, p_aArgs, p_oShadow) {
@@ -172,17 +172,17 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
 
         oUL.style.marginTop = "";
         oBody.style.overflow = "";
-        
+
         //  Check if the menu is a submenu of a submenu.
 
-        if (this.parent && 
+        if (this.parent &&
             !(this.parent instanceof YAHOO.widget.MenuBarItem)) {
 
             // Clear widths set by the "beforeshow" event handler
             if (ua.gecko) {
                 oBody.style.width = "";
             }
-            
+
             if (ua.ie == 7) {
                 this.element.style.width = "";
             }
@@ -190,23 +190,23 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
     }
 
     /*
-         "show" event handler for each submenu of the MenuBar 
-         instance - used to kick off the animation of the 
+         "show" event handler for each submenu of the MenuBar
+         instance - used to kick off the animation of the
          <ul> element.
     */
     function onSubmenuShow(p_sType, p_sArgs) {
         var oElement,
             oShadow,
             oUL;
-    
+
         if (this.parent) {
 
             oElement = this.element;
             oShadow = oElement.lastChild;
             oUL = this.body.getElementsByTagName("ul")[0];
-        
+
             /*
-                 Animate the <ul> element's "marginTop" style 
+                 Animate the <ul> element's "marginTop" style
                  property to a value of 0.
             */
             oAnim = new YAHOO.util.Anim(oUL,
@@ -222,14 +222,14 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
     }
 
     /*
-         Instantiate a MenuBar:  The first argument passed to the 
-         constructor is the id of the element in the page 
-         representing the MenuBar; the second is an object literal 
+         Instantiate a MenuBar:  The first argument passed to the
+         constructor is the id of the element in the page
+         representing the MenuBar; the second is an object literal
          of configuration properties.
     */
     var yuimenubar = new YAHOO.widget.MenuBar("yuimenubar", {
-                                                autosubmenudisplay: true, 
-                                                hidedelay: 750, 
+                                                autosubmenudisplay: true,
+                                                hidedelay: 750,
                                                 lazyload: true });
 
 {/literal}
@@ -245,7 +245,7 @@ YAHOO.util.Event.onContentReady("yuimenubar", function () {
 {/literal}
 {/if}
 {literal}
-	yuimenubar.render(); 
+	yuimenubar.render();
 });
 
 {/literal}
